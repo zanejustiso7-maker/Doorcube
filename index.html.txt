@@ -1,62 +1,11 @@
-<index.html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My First Website</title>
     <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            text-align: center;
-        }
-
-        header {
-            background-color: #4CAF50;
-            color: white;
-            padding: 20px;
-        }
-
-        nav {
-            background-color: #333;
-            padding: 10px;
-        }
-
-        nav a {
-            color: white;
-            margin: 0 15px;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        nav a:hover {
-            text-decoration: underline;
-        }
-
-        main {
-            padding: 40px;
-        }
-
-        #upload {
-            margin-top: 30px;
-        }
-
-        #preview img {
-            max-width: 300px;
-            max-height: 200px;
-            border: 1px solid #ccc;
-            margin-top: 10px;
-        }
-
-        footer {
-            background-color: #222;
-            color: white;
-            padding: 15px;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
+        /* your CSS stays the same */
     </style>
 </head>
 <body>
@@ -82,7 +31,9 @@
             <input type="file" id="imageInput" accept="image/*">
             <button id="uploadBtn">Upload</button>
             <div id="preview" aria-live="polite"></div>
-            <p style="font-size:0.9rem;color:#666;margin-top:8px;">Note: This demo previews images client-side. Add a backend to store uploads.</p>
+            <p style="font-size:0.9rem;color:#666;margin-top:8px;">
+                Note: This demo previews images client-side. Add a backend to store uploads.
+            </p>
         </section>
     </main>
 
@@ -90,39 +41,41 @@
         <p>© 2025 My Website</p>
     </footer>
 
+    <!-- ✅ SCRIPT GOES HERE -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function(){
+        const input = document.getElementById('imageInput');
+        const preview = document.getElementById('preview');
+        const uploadBtn = document.getElementById('uploadBtn');
+
+        input.addEventListener('change', () => {
+            const file = input.files && input.files[0];
+            if (!file) {
+                preview.innerHTML = '';
+                return;
+            }
+            if (!file.type.startsWith('image/')) {
+                preview.innerText = 'Please select an image file.';
+                return;
+            }
+            const img = document.createElement('img');
+            img.src = URL.createObjectURL(file);
+            img.alt = file.name;
+            preview.innerHTML = '';
+            preview.appendChild(img);
+        });
+
+        uploadBtn.addEventListener('click', () => {
+            if (!input.files || !input.files[0]) {
+                alert('Select an image first.');
+                return;
+            }
+            alert('This is a static demo: implement a server endpoint to complete the upload.');
+        });
+    });
+    </script>
+
 </body>
 </html>
 
-<script>
-document.addEventListener('DOMContentLoaded', function(){
-    const input = document.getElementById('imageInput');
-    const preview = document.getElementById('preview');
-    const uploadBtn = document.getElementById('uploadBtn');
-
-    input.addEventListener('change', () => {
-        const file = input.files && input.files[0];
-        if (!file) {
-            preview.innerHTML = '';
-            return;
-        }
-        if (!file.type.startsWith('image/')) {
-            preview.innerText = 'Please select an image file.';
-            return;
-        }
-        const img = document.createElement('img');
-        img.src = URL.createObjectURL(file);
-        img.alt = file.name;
-        preview.innerHTML = '';
-        preview.appendChild(img);
-    });
-
-    uploadBtn.addEventListener('click', () => {
-        if (!input.files || !input.files[0]) {
-            alert('Select an image first.');
-            return;
-        }
-        alert('This is a static demo: implement a server endpoint to complete the upload.');
-    });
-});
-</script>
  
