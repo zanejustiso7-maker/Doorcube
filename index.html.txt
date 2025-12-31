@@ -1,0 +1,76 @@
+<index.html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My First Website</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+        }
+
+        nav {
+            background-color: #333;
+            padding: 10px;
+        }
+
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        main {
+            padding: 40px;
+        }
+
+        footer {
+            background-color: #222;
+            color: white;
+            padding: 15px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Welcome to My Website</h1>
+        <p>This is my starter homepage</p>
+    </header>
+
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Projects</a>
+        <a href="#">Contact</a>
+    </nav>
+
+    <main>
+        <h2>Hello! 👋</h2>
+        <p>This is my first website. I can add text, images, and more.</p>
+    </main>
+
+    <footer>
+        <p>© 2025 My Website</p>
+    </footer>
+
+</body>
+</html>
+ 
